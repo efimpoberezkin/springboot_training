@@ -1,0 +1,529 @@
+{
+	"info": {
+		"name": "Flight Booking",
+		"_postman_id": "66eb1938-fab1-31c2-ed18-d920ea6b59f2",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Airplane Requests",
+			"item": [
+				{
+					"name": "GetAirplanes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/flight_booking/airplanes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight_booking",
+								"airplanes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAirplaneById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/flight_booking/airplanes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight_booking",
+								"airplanes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddAirplane",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"modelNumber\": \"Boeing747\",\n\t\"capacity\": 175\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/flight_booking/airplanes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight_booking",
+								"airplanes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateAirplane",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 3,\n\t\"modelNumber\": \"Boeing757\",\n\t\"capacity\": 185\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/flight_booking/airplanes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight_booking",
+								"airplanes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAirplane",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/flight_booking/airplanes/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight_booking",
+								"airplanes",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Flight Requests",
+			"item": [
+				{
+					"name": "GetFlights",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/flight_booking/flights",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight_booking",
+								"flights"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetFlightById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/flight_booking/flights/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight_booking",
+								"flights",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddFlight",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"fromLoc\": \"E\",\n\t\"toLoc\": \"F\",\n\t\"departure\": \"2017-10-21 10:00:00\",\n\t\"arrival\": \"2017-10-21 13:00:00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/flight_booking/flights",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight_booking",
+								"flights"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateFlight",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 8,\n\t\"fromLoc\": \"Q\",\n\t\"toLoc\": \"R\",\n\t\"departure\": \"2017-10-21 10:00:00\",\n\t\"arrival\": \"2017-10-21 13:00:00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/flight_booking/flights",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight_booking",
+								"flights"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteFlight",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/flight_booking/flights/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight_booking",
+								"flights",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddPassenger",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/flight_booking/flights/6/passengers/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight_booking",
+								"flights",
+								"6",
+								"passengers",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RemovePassenger",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/flight_booking/flights/6/passengers/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight_booking",
+								"flights",
+								"6",
+								"passengers",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Passenger Requests",
+			"item": [
+				{
+					"name": "GetPassengers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/flight_booking/passengers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight_booking",
+								"passengers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPassengerById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/flight_booking/passengers/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight_booking",
+								"passengers",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddPassenger",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Harry\",\n\t\"gender\": \"MALE\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/flight_booking/passengers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight_booking",
+								"passengers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdatePassenger",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 10,\n\t\"name\": \"Hermione\",\n\t\"gender\": \"FEMALE\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/flight_booking/passengers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight_booking",
+								"passengers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddInfo",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"Clark's email\",\n\t\"phone\": \"Clark's phone\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/flight_booking/passengers/9/passengerinfo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight_booking",
+								"passengers",
+								"9",
+								"passengerinfo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PassengerContactInfo Requests",
+			"item": [
+				{
+					"name": "GetInfoById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/flight_booking/passengerinfo/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight_booking",
+								"passengerinfo",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateInfo",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 5,\n\t\"email\": \"Jaimes new email\",\n\t\"phone\": \"Jaimes new phone\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/flight_booking/passengerinfo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight_booking",
+								"passengerinfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteInfo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/flight_booking/passengerinfo/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight_booking",
+								"passengerinfo",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
