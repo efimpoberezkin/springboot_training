@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/flights")
+@RequestMapping("${flights.uri}")
 public class FlightControllerImpl implements FlightController {
 
     @Autowired

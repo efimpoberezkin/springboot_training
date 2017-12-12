@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -24,6 +25,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class SpringbootApplicationTests {
 
     @Autowired
+    private Environment environment;
+
+    @Autowired
     private MockMvc mockMvc;
 
     @Test
@@ -35,7 +39,7 @@ public class SpringbootApplicationTests {
         airplane.setModelNumber(modelNumber);
         airplane.setCapacity(capacity);
 
-        mockMvc.perform(post("/airplanes")
+        mockMvc.perform(post(environment.getProperty("airplanes.uri"))
                 .content(asJsonString(airplane))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
@@ -46,7 +50,7 @@ public class SpringbootApplicationTests {
 
     @Test
     public void testFlightDelete() throws Exception {
-        mockMvc.perform(delete("/flights/3"))
+        mockMvc.perform(delete(environment.getProperty("flights.uri") + "/3"))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
@@ -62,7 +66,7 @@ public class SpringbootApplicationTests {
         passengerContactInfo.setEmail(email);
         passengerContactInfo.setPhone(phone);
 
-        mockMvc.perform(put("/passengerinfo")
+        mockMvc.perform(put(environment.getProperty("passengerinfo.uri"))
                 .content(asJsonString(passengerContactInfo))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
@@ -74,7 +78,7 @@ public class SpringbootApplicationTests {
 
     @Test
     public void testPassengerGet() throws Exception {
-        mockMvc.perform(get("/passengers/3"))
+        mockMvc.perform(get(environment.getProperty("passengers.uri") + "/3"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(3)))
@@ -87,7 +91,7 @@ public class SpringbootApplicationTests {
 
     @Test
     public void testPassengerGetAll() throws Exception {
-        mockMvc.perform(get("/passengers"))
+        mockMvc.perform(get(environment.getProperty("passengers.uri")))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()", is(9)));

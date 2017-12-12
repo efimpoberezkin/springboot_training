@@ -6,13 +6,14 @@ import com.epam.homework.springboot.domain.Airplane;
 import com.epam.homework.springboot.service.Service;
 import com.epam.homework.springboot.service.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/airplanes")
+@RequestMapping("${airplanes.uri}")
 public class AirplaneControllerImpl implements AirplaneController {
 
     @Autowired
