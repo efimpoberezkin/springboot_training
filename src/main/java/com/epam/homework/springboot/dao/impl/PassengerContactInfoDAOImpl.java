@@ -36,6 +36,6 @@ public class PassengerContactInfoDAOImpl implements PassengerContactInfoDAO {
 
     @Override
     public void delete(long id) {
-        entityManager.remove(entityManager.merge(findBy(id)));
+        entityManager.remove(findBy(id));
     }
 }

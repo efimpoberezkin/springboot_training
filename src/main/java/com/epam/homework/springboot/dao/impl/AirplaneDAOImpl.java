@@ -39,6 +39,6 @@ public class AirplaneDAOImpl implements AirplaneDAO {
 
     @Override
     public void delete(long id) {
-        entityManager.remove(entityManager.merge(findBy(id)));
+        entityManager.remove(findBy(id));
     }
 }
