@@ -1,6 +1,7 @@
 package com.epam.homework.springboot;
 
 import com.epam.homework.springboot.domain.Airplane;
+import com.epam.homework.springboot.domain.PassengerContactInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,11 +44,59 @@ public class SpringbootApplicationTests {
                 .andExpect(jsonPath("$.capacity", is(capacity)));
     }
 
+    @Test
+    public void testFlightDelete() throws Exception {
+        mockMvc.perform(delete("/flights/3"))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
 
-    public static String asJsonString(final Object obj) {
+    @Test
+    public void testPassengerContactInfoUpdate() throws Exception {
+        int id = 5;
+        String email = "Jaimes new email";
+        String phone = "Jaimes new phone";
+
+        PassengerContactInfo passengerContactInfo = new PassengerContactInfo();
+        passengerContactInfo.setId(((long) id));
+        passengerContactInfo.setEmail(email);
+        passengerContactInfo.setPhone(phone);
+
+        mockMvc.perform(put("/passengerinfo")
+                .content(asJsonString(passengerContactInfo))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id", is(id)))
+                .andExpect(jsonPath("$.email", is(email)))
+                .andExpect(jsonPath("$.phone", is(phone)));
+    }
+
+    @Test
+    public void testPassengerGet() throws Exception {
+        mockMvc.perform(get("/passengers/3"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id", is(3)))
+                .andExpect(jsonPath("$.name", is("Logan")))
+                .andExpect(jsonPath("$.gender", is("MALE")))
+                .andExpect(jsonPath("$.contactInfo.id", is(3)))
+                .andExpect(jsonPath("$.contactInfo.email", is("Logans email")))
+                .andExpect(jsonPath("$.contactInfo.phone", is("Logans phone")));
+    }
+
+    @Test
+    public void testPassengerGetAll() throws Exception {
+        mockMvc.perform(get("/passengers"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.length()", is(9)));
+    }
+
+    private String asJsonString(Object obj) {
         try {
-            final ObjectMapper mapper = new ObjectMapper();
-            final String jsonContent = mapper.writeValueAsString(obj);
+            ObjectMapper mapper = new ObjectMapper();
+            String jsonContent = mapper.writeValueAsString(obj);
             return jsonContent;
         } catch (Exception e) {
             throw new RuntimeException(e);
