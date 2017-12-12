@@ -2,6 +2,7 @@ package com.epam.homework.springboot.controller.impl;
 
 import com.epam.homework.springboot.controller.ControllerException;
 import com.epam.homework.springboot.controller.PassengerController;
+import com.epam.homework.springboot.domain.Gender;
 import com.epam.homework.springboot.domain.Passenger;
 import com.epam.homework.springboot.domain.PassengerContactInfo;
 import com.epam.homework.springboot.service.PassengerService;
@@ -63,5 +64,11 @@ public class PassengerControllerImpl implements PassengerController {
         } catch (ServiceException e) {
             throw new ControllerException("Failed to add contact info to passenger", e);
         }
+    }
+
+    @GetMapping("/gender/{gender}")
+    @Override
+    public List<Passenger> findByGender(@PathVariable Gender gender) {
+        return passengerService.findByGender(gender);
     }
 }

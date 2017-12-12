@@ -13,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -95,6 +96,14 @@ public class SpringbootApplicationTests {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()", is(9)));
+    }
+
+    @Test
+    public void testPassengerGetByGender() throws Exception {
+        mockMvc.perform(get(environment.getProperty("passengers.uri") + "/gender/FEMALE"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("[*].name", containsInAnyOrder("Emily", "Robin", "Anna", "Joanne")));
     }
 
     private String asJsonString(Object obj) {
