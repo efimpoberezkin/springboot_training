@@ -103,7 +103,7 @@ public class SpringbootApplicationTests {
         mockMvc.perform(get(environment.getProperty("passengers.uri") + "/gender/FEMALE"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("[*].name", containsInAnyOrder("Emily", "Robin", "Anna", "Joanne")));
+                .andExpect(jsonPath("[*].id", containsInAnyOrder(2, 6, 7, 8)));
     }
 
     private String asJsonString(Object obj) {
