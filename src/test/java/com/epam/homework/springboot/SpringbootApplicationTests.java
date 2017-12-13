@@ -114,6 +114,14 @@ public class SpringbootApplicationTests {
                 .andExpect(jsonPath("[*].id", containsInAnyOrder(1, 4)));
     }
 
+    @Test
+    public void testDescriptionGet() throws Exception {
+        mockMvc.perform(get(environment.getProperty("description.uri")))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", is(environment.getProperty("description.text"))));
+    }
+
     private String asJsonString(Object obj) {
         try {
             ObjectMapper mapper = new ObjectMapper();

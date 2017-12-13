@@ -6,7 +6,10 @@
 	<groupId>com.epam.homework</groupId>
 	<artifactId>springboot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+    <modules>
+		<module>description-controller-starter</module>
+	</modules>
+    <packaging>pom</packaging>
 
 	<name>springboot</name>
 	<description>Demo project for Spring Boot</description>
@@ -52,6 +55,12 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>1.3.156</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.epam.homework.customstarter</groupId>
+			<artifactId>description-controller-spring-boot-starter</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
