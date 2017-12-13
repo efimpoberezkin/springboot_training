@@ -24,4 +24,6 @@ public interface FlightService extends Service<Flight> {
     Flight addPassengerToFlight(long flightId, long passengerId);
 
     void removePassengerFromFlight(long flightId, long passengerId);
+
+    List<Flight> findByFromLocAndToLoc(String fromLoc, String toLoc);
 }

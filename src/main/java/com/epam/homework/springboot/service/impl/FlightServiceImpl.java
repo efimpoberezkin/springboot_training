@@ -92,4 +92,9 @@ public class FlightServiceImpl implements FlightService {
             throw new ServiceException("Failed to remove passenger from flight: could not find flight by id " + flightId, e);
         }
     }
+
+    @Override
+    public List<Flight> findByFromLocAndToLoc(String fromLoc, String toLoc) {
+        return flightRepository.findByFromLocAndToLoc(fromLoc, toLoc);
+    }
 }

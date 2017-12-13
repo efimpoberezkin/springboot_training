@@ -106,6 +106,14 @@ public class SpringbootApplicationTests {
                 .andExpect(jsonPath("[*].id", containsInAnyOrder(2, 6, 7, 8)));
     }
 
+    @Test
+    public void testFlightGetByFromLocAndToLoc() throws Exception {
+        mockMvc.perform(get(environment.getProperty("flights.uri") + "/from/A/to/B"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("[*].id", containsInAnyOrder(1, 4)));
+    }
+
     private String asJsonString(Object obj) {
         try {
             ObjectMapper mapper = new ObjectMapper();

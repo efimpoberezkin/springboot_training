@@ -79,4 +79,10 @@ public class FlightControllerImpl implements FlightController {
             throw new ControllerException("Failed to remove passenger from flight", e);
         }
     }
+
+    @GetMapping("/from/{fromLoc}/to/{toLoc}")
+    @Override
+    public List<Flight> findByFromLocAndToLoc(@PathVariable String fromLoc, @PathVariable String toLoc) {
+        return flightService.findByFromLocAndToLoc(fromLoc, toLoc);
+    }
 }
