@@ -1,11 +1,9 @@
 package com.epam.homework.customstarter;
 
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 
-@Component
 @NoArgsConstructor
 public class DescriptionConfig {
 

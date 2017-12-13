@@ -7,7 +7,7 @@
 	<artifactId>springboot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
     <modules>
-		<module>description-controller-starter</module>
+		<module>description-printer-starter</module>
 	</modules>
     <packaging>pom</packaging>
 
@@ -59,7 +59,7 @@
 
 		<dependency>
 			<groupId>com.epam.homework.customstarter</groupId>
-			<artifactId>description-controller-spring-boot-starter</artifactId>
+			<artifactId>description-printer-spring-boot-starter</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

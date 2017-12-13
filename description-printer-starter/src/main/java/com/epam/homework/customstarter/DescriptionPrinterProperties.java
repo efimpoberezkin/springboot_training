@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "description")
 @Getter
 @Setter
-public class DescriptionControllerProperties {
+public class DescriptionPrinterProperties {
 
     private String text;
 

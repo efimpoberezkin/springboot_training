@@ -8,12 +8,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConditionalOnClass(DescriptionControllerPrinter.class)
-@EnableConfigurationProperties(DescriptionControllerProperties.class)
-public class DescriptionControllerAutoConfiguration {
+@ConditionalOnClass(DescriptionPrinter.class)
+@EnableConfigurationProperties(DescriptionPrinterProperties.class)
+public class DescriptionPrinterAutoConfiguration {
 
     @Autowired
-    private DescriptionControllerProperties descriptionControllerProperties;
+    private DescriptionPrinterProperties descriptionControllerProperties;
 
     @Bean
     @ConditionalOnMissingBean
@@ -35,7 +35,7 @@ public class DescriptionControllerAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public DescriptionControllerPrinter descriptionController() {
-        return new DescriptionControllerPrinter();
+    public DescriptionPrinter descriptionPrinter() {
+        return new DescriptionPrinter();
     }
 }

@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.epam.homework.customstarter</groupId>
-    <artifactId>description-controller-spring-boot-starter</artifactId>
+    <artifactId>description-printer-spring-boot-starter</artifactId>
 
 
 </project>
