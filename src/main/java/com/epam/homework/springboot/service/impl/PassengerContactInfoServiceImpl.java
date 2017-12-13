@@ -1,7 +1,7 @@
 package com.epam.homework.springboot.service.impl;
 
-import com.epam.homework.springboot.dao.DAO;
 import com.epam.homework.springboot.domain.PassengerContactInfo;
+import com.epam.homework.springboot.repository.PassengerContactInfoRepository;
 import com.epam.homework.springboot.service.PassengerContactInfoService;
 import com.epam.homework.springboot.service.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import java.util.List;
 public class PassengerContactInfoServiceImpl implements PassengerContactInfoService {
 
     @Autowired
-    private DAO<PassengerContactInfo> passengerContactInfoDAO;
+    private PassengerContactInfoRepository passengerContactInfoRepository;
 
     @Override
     @Transactional
@@ -33,7 +33,7 @@ public class PassengerContactInfoServiceImpl implements PassengerContactInfoServ
     @Transactional
     public PassengerContactInfo findBy(long id) throws ServiceException {
         try {
-            return passengerContactInfoDAO.findBy(id);
+            return passengerContactInfoRepository.findOne(id);
         } catch (NoResultException e) {
             throw new ServiceException("Failed to find passenger contact info by id " + id, e);
         }
@@ -42,14 +42,14 @@ public class PassengerContactInfoServiceImpl implements PassengerContactInfoServ
     @Override
     @Transactional
     public PassengerContactInfo update(PassengerContactInfo passengerContactInfo) {
-        return passengerContactInfoDAO.update(passengerContactInfo);
+        return passengerContactInfoRepository.save(passengerContactInfo);
     }
 
     @Override
     @Transactional
     public void delete(long id) throws ServiceException {
         try {
-            passengerContactInfoDAO.delete(id);
+            passengerContactInfoRepository.delete(id);
         } catch (NoResultException e) {
             throw new ServiceException("Failed to find passenger contact info by id " + id, e);
         }

@@ -1,13 +1,14 @@
 package com.epam.homework.springboot.service.impl;
 
-import com.epam.homework.springboot.dao.DAO;
 import com.epam.homework.springboot.domain.Flight;
 import com.epam.homework.springboot.domain.Passenger;
+import com.epam.homework.springboot.repository.FlightRepository;
+import com.epam.homework.springboot.repository.PassengerRepository;
 import com.epam.homework.springboot.service.FlightService;
 import com.epam.homework.springboot.service.ServiceException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -15,28 +16,28 @@ import java.util.List;
 @Service
 public class FlightServiceImpl implements FlightService {
 
-    @Autowired
-    private DAO<Flight> flightDAO;
-    @Autowired
-    private DAO<Passenger> passengerDAO;
+    @Resource
+    private FlightRepository flightRepository;
+    @Resource
+    private PassengerRepository passengerRepository;
 
     @Override
     @Transactional
     public Flight save(Flight flight) {
-        return flightDAO.save(flight);
+        return flightRepository.save(flight);
     }
 
     @Override
     @Transactional
     public List<Flight> findAll() {
-        return flightDAO.findAll();
+        return (List<Flight>) flightRepository.findAll();
     }
 
     @Override
     @Transactional
     public Flight findBy(long id) throws ServiceException {
         try {
-            return flightDAO.findBy(id);
+            return flightRepository.findOne(id);
         } catch (NoResultException e) {
             throw new ServiceException("Failed to find flight by id " + id, e);
         }
@@ -45,14 +46,14 @@ public class FlightServiceImpl implements FlightService {
     @Override
     @Transactional
     public Flight update(Flight flight) {
-        return flightDAO.update(flight);
+        return flightRepository.save(flight);
     }
 
     @Override
     @Transactional
     public void delete(long id) throws ServiceException {
         try {
-            flightDAO.delete(id);
+            flightRepository.delete(id);
         } catch (NoResultException e) {
             throw new ServiceException("Failed to find flight by id " + id, e);
         }
@@ -62,11 +63,11 @@ public class FlightServiceImpl implements FlightService {
     @Transactional
     public Flight addPassengerToFlight(long flightId, long passengerId) throws ServiceException {
         try {
-            Flight flight = flightDAO.findBy(flightId);
+            Flight flight = flightRepository.findOne(flightId);
             try {
-                Passenger passenger = passengerDAO.findBy(passengerId);
+                Passenger passenger = passengerRepository.findOne(passengerId);
                 flight.addPassenger(passenger);
-                return flightDAO.update(flight);
+                return flightRepository.save(flight);
             } catch (NoResultException e) {
                 throw new ServiceException("Failed to add passenger to flight: could not find passenger by id " + passengerId, e);
             }
@@ -79,11 +80,11 @@ public class FlightServiceImpl implements FlightService {
     @Transactional
     public void removePassengerFromFlight(long flightId, long passengerId) throws ServiceException {
         try {
-            Flight flight = flightDAO.findBy(flightId);
+            Flight flight = flightRepository.findOne(flightId);
             try {
-                Passenger passenger = passengerDAO.findBy(passengerId);
+                Passenger passenger = passengerRepository.findOne(passengerId);
                 flight.removePassenger(passenger);
-                flightDAO.update(flight);
+                flightRepository.save(flight);
             } catch (NoResultException e) {
                 throw new ServiceException("Failed to remove passenger from flight: could not find passenger by id " + passengerId, e);
             }
