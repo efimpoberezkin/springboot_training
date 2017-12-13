@@ -10,6 +10,4 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class DescriptionPrinterProperties {
 
     private String text;
-
-    private String uri;
 }

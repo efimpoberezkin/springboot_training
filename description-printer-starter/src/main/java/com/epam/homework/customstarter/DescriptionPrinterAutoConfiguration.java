@@ -22,13 +22,8 @@ public class DescriptionPrinterAutoConfiguration {
                 ? System.getProperty("description.text")
                 : descriptionControllerProperties.getText();
 
-        String uri = descriptionControllerProperties.getUri() == null
-                ? System.getProperty("description.uri")
-                : descriptionControllerProperties.getUri();
-
         DescriptionConfig descriptionConfig = new DescriptionConfig();
         descriptionConfig.put("text", text);
-        descriptionConfig.put("uri", uri);
 
         return descriptionConfig;
     }
